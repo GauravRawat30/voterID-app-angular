@@ -1,0 +1,165 @@
+<div class="container" style="background-image: url('assets/back.jpg');background-size: cover;
+max-width: 100%;
+height: 100vh;" >
+  <div class="row">
+
+    
+    <div><p class="heading" style="margin: 65px 70px 20px 70px;text-align:left">Voter Id Form</p></div>
+    <div class="alert alert-success" role="alert" *ngIf="text">
+        {{message}}
+      </div>
+    <form class="inputform" [formGroup]="inputForm" (ngSubmit)="onSubmit()" style="max-width: 550px;
+    margin-left: 70px;
+    color: #fff;background: #0000007a;
+    border-radius: 10px;">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="fname">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fname"
+            placeholder="first name"
+            minlength="3"
+            formControlName="firstName"
+          />
+
+          <span
+            *ngIf="
+              !inputForm.controls['firstName'].valid &&
+              inputForm.controls['firstName'].touched
+            "
+          >
+            <span *ngIf="inputForm.controls['firstName'].errors['required']">
+              Should not be Empty</span
+            >
+            <span *ngIf="inputForm.controls['firstName'].errors['minlength']"
+              >Name length must be greater than 3
+            </span>
+          </span>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="lname">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lname"
+            placeholder="last name"
+            formControlName="lastName"
+          />
+          <span
+            *ngIf="
+              !inputForm.controls['lastName'].valid &&
+              inputForm.controls['lastName'].touched
+            "
+          >
+            <span *ngIf="inputForm.controls['lastName'].errors['required']">
+              Should not be Empty</span
+            >
+            <span *ngIf="inputForm.controls['lastName'].errors['minlength']"
+              >Name length must be greater than 3
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input
+          type="date"
+          class="form-control"
+          id="dob"
+          placeholder="Birth data"
+          formControlName="dob"
+        />
+        <span
+          *ngIf="
+            !inputForm.controls['dob'].valid &&
+            inputForm.controls['dob'].touched
+          "
+        >
+          <span *ngIf="inputForm.controls['dob'].errors['required']">
+            Should not be Empty</span
+          >
+          <span *ngIf="inputForm.controls['dob'].errors['ageValid']">
+            Age must be above 18</span
+          >
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="nationality">Nationality</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nationality"
+          placeholder="nationality"
+          formControlName="nationality"
+        />
+        <span
+          *ngIf="
+            !inputForm.controls['nationality'].valid &&
+            inputForm.controls['nationality'].touched
+          "
+        >
+          <span *ngIf="inputForm.controls['nationality'].errors['required']">
+            Should not be Empty</span
+          >
+        </span>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-4">
+          <label for="state">State</label>
+          <select id="state" class="form-control" formControlName="state">
+            <option selected>Select State</option>
+            <option *ngFor="let state of allStates">
+              {{ state.stateName }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="city">City</label>
+          <input
+            type="text"
+            class="form-control"
+            id="city"
+            formControlName="city"
+          />
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="pincode">Pin Code</label>
+          <input
+            type="text"
+            class="form-control"
+            id="pincode"
+            maxlength="6"
+            formControlName="pinCode"
+          />
+          <span
+            *ngIf="
+              !inputForm.controls['pinCode'].valid &&
+              inputForm.controls['pinCode'].touched
+            "
+          >
+            <span *ngIf="inputForm.controls['pinCode'].errors['required']">
+              Should not be Empty</span
+            >
+          </span>
+        </div>
+      </div>
+      <div class="btnbox">
+        <button
+          type="submit"
+          class="btn btn-primary left"
+          [disabled]="!inputForm.valid"
+          style="width: 140px;"
+        >
+          Submit
+        </button>
+        <button type="reset" class="btn btn-primary right" style="width: 140px;">Reset</button>
+      </div>
+     
+    </form>
+  </div>
+</div>

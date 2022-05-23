@@ -1,0 +1,17 @@
+button {
+    border: none !important;
+    color: #0d6efd !important;
+    font-weight: bold !important;
+    text-decoration: underline;
+    letter-spacing: 1px;
+    cursor: pointer !important;
+    outline: none !important;
+}
+button:hover {
+    background: #346efd !important;
+    color: #fff !important;
+    text-decoration: none !important;
+}
+button:focus {
+    box-shadow: none !important;
+}

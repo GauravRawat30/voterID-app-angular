@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <form [formGroup]="inputList" (ngSubmit)="submitList()">
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          margin: 20px 0px 10px 0px;
+        "
+      >
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          formControlName="state"
+        >
+          <option selected>Select State</option>
+          <option *ngFor="let list of statelist">{{ list.stateName }}</option>
+        </select>
+        <button class="btn btn-primary" style="margin-left: 53%">
+          <a
+            class="nav-link"
+            style="color: #fff; padding: 0"
+            (click)="userList()"
+            >Users list</a
+          >
+        </button>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </form>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">State</th>
+
+          <th scope="col">City with Pin Code</th>
+          <th scope="col">DOB</th>
+          <th scope="col">Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let list of allList">
+          <th>{{ list.id }}</th>
+          <td>{{ list.firstName }} {{ list.lastName }}</td>
+          <td>{{ list.firstName }}</td>
+          <td>{{ list.lastName }}</td>
+          <td>{{ list.state }}</td>
+          <td>{{ list.city }} <span>-</span> {{ list.pinCode }}</td>
+          <td>{{ list.dob }}</td>
+          <td>{{ list.age }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
